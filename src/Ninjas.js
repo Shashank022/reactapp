@@ -1,16 +1,29 @@
 import React from 'react';
 import './App.css';
 
-class Ninjas extends React.Component {
-  render() {
+const Ninjas= ({ninjas}) =>{
+  
+    const ninjaList = ninjas.map(ninja =>{
+
+      if(ninja.age >20){
+        return (
+          <div className="ninja" key={ninja.id}>
+              <div>Name: {ninja.name}</div>
+              <div>Age : {ninja.age}</div>
+              <div>Belt; {ninja.belt}</div>
+          </div>
+          )
+        }else{
+          return null;
+        }
+
+      });
+      
     return (
       <div className="ninja">
-      <div>Name: Ryu </div>
-      <div>Age : 29</div>
-      <div>Belt : Black</div>
+        {ninjaList}
       </div>
-    );
-  }
+    )
 }
 
 export default Ninjas;
