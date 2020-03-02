@@ -42,11 +42,19 @@ nameChangeHandler = (event) => {
 
 render(){
 
+  const style = {
+    backgroundColor:'white',
+    font:'inherit',
+    border:'1x solid blue',
+    padding: '8px',
+    cursor:'pointer'
+  };
+
   return (
     <div className="App">
         <h1>REACT</h1>
         <p>This is working...!!!</p>
-        <button onClick={() => this.togglePersonsHandler}>Switch Prop</button>
+        <button style={style} onClick={() => this.togglePersonsHandler}>Switch Prop</button>
         
           <div>
             <Person 
