@@ -1,38 +1,100 @@
-import React from 'react';
-import Person from './Person/Person';
+import React, { Component } from 'react';
 import './App.css';
+import Person from './Person/Person';
 
-class App extends React.Component {
+class App extends Component {
+ state = ({
+    persons:[
+          { name:'Kumar', age:28 },
+          { name:'Kiran', age:29 },
+          { name:'Lenin', age:22 }
+        ],
+        otherState:'some other value',
+        showPersons:false
+  }); 
 
-state = {
-  persons :[
-    {name:"Rajendra" , age:29},
-    {name:"Cherry" , age:16},
-    {name:"Apple" , age:12}
-  ]
+
+switchNameHandler = (newName) => {
+  this.setState({
+    persons:[
+      { name:newName, age:89 },
+      { name:'Kiran Reddy', age:29 },
+      { name:'Lenin Smith', age:45 }
+    ]
+    
+  });
 }
 
-switchNameHandler= () =>{
-   this.setState({persons :[
-    {name:"Sunny" , age:29},
-    {name:"Mahendra" , age:16},
-    {name:"Kumara Chinna" , age:12}
-  ]})
+togglePersonsHandler = () => {
+  const doesShow = this.StaticRange.showPersons;
+  this.setState({showPersons: !doesShow})
+
 }
 
 
-  render() {
-    return (
-      <div className="App">
-      <h2>My First App </h2>
-      <p>Welcome......!!!</p>
-      <button onClick={this.switchNameHandler}>Switch</button>
-      <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-      <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-      <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-      </div>
-    );
-  }
+
+nameChangeHandler = (event) => {
+  this.setState({
+        persons:[
+          { name:'Raja Kumar', age:89 },
+          { name: event.target.value, age:29 },
+          { name:'Lenin Smith', age:45 }
+        ]
+      });
+}
+
+render(){
+
+  return (
+    <div className="App">
+        <h1>REACT</h1>
+        <p>This is working...!!!</p>
+        <button onClick={() => this.togglePersonsHandler}>Switch Prop</button>
+        {
+          this.showPersons === true ?
+          <div>
+            <Person 
+                name={this.state.persons[0].name} 
+                age={this.state.persons[0].age}
+                />
+            <Person 
+                name={this.state.persons[1].name} 
+                age={this.state.persons[1].age}
+                click={this.switchNameHandler.bind(this,'Kranthi Rajaram..!!')} 
+                changed={this.nameChangeHandler}
+                > My Hobbies are:</Person>
+            <Person 
+                name={this.state.persons[2].name} 
+                age={this.state.persons[2].age}/>
+          </div> : null
+          }
+    </div>
+  );
+}
+    //return React.createElement('div',null,React.createElement('h1',{className:'App'},'New React App...!!'));
 }
 
 export default App;
+
+
+// state = {
+//   persons:[
+//     { name:'Kumar', age:28 },
+//     { name:'Kiran', age:29 },
+//     { name:'Lenin', age:22 }
+//   ],
+//   otherState:'some other value'
+  
+// }
+
+// switchNameHandler = () => {
+//   this.setState({
+//     persons:[
+//       { name:'Raja Kumar', age:89 },
+//       { name:'Kiran Reddy', age:29 },
+//       { name:'Lenin Smith', age:45 }
+//     ]
+    
+//   });
+//   console.log(this.state);
+// }
