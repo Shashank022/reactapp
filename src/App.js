@@ -25,7 +25,7 @@ switchNameHandler = (newName) => {
 }
 
 togglePersonsHandler = () => {
-  const doesShow = this.StaticRange.showPersons;
+  const doesShow = this.state.showPersons;
   this.setState({showPersons: !doesShow})
 
 }
@@ -54,8 +54,9 @@ render(){
     <div className="App">
         <h1>REACT</h1>
         <p>This is working...!!!</p>
-        <button style={style} onClick={() => this.togglePersonsHandler}>Switch Prop</button>
-        
+        <button style={style} onClick={this.togglePersonsHandler}>Toggle</button>
+
+      { this.state.showPersons === true ?
           <div>
             <Person 
                 name={this.state.persons[0].name} 
@@ -70,7 +71,9 @@ render(){
             <Person 
                 name={this.state.persons[2].name} 
                 age={this.state.persons[2].age}/>
-          </div>
+          </div> : null
+          }
+
     </div>
   );
 }
