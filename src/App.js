@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+//import Radium  from 'radium';
 import Person from './Person/Person';
-import person from './Person/Person';
+
 
 class App extends Component {
  state = ({
@@ -57,11 +58,15 @@ deletePersonHandler = (personIndex) => {
 render(){
 
   const style = {
-    backgroundColor:'white',
+    backgroundColor:'green',
     font:'inherit',
     border:'1x solid blue',
     padding: '8px',
-    cursor:'pointer'
+    cursor:'pointer',
+    ':hover':{
+      backgroundColor:'lightgreen',
+      color:'black'
+    }
   };
 
   // eslint-disable-next-line
@@ -81,12 +86,23 @@ render(){
           })}
           </div> 
       )
+      style.backgroundColor = 'red';
   }
+
+  let classes =[];
+
+  if(this.state.persons.length <= 2){
+      classes.push('red');
+  }
+
+  if(this.state.persons.length <= 1){
+    classes.push('bold');
+}
 
   return (
     <div className="App">
         <h1>REACT</h1>
-        <p>This is working...!!!</p>
+        <p className={classes.join(' ')}>This is working...!!!</p>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle</button>
           {persons}
     </div>

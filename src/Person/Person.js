@@ -1,13 +1,22 @@
 import React from 'react';
 import './Person.css';
+import styled from 'styled-components';
 
 const person = (props) =>{
+
+const style = {
+    '@media (min-width: 500px)':{
+        width: '450px'
+    }
+};
+
     return(
-        <div className="Person">
-        <p onClick={props.click}>I am {props.name} for Person with {props.age}  years old</p>
-        <p>{props.children}</p>
-        <input type="text" onChange={props.changed} value={props.name}>
-        </input>
+       <div className="Person">
+
+            <p onClick={props.click}>I am {props.name} for Person with {props.age}  years old</p>
+            <p>{props.children}</p>
+            <input type="text" onChange={props.changed} value={props.name}>
+            </input>
         </div>
     ) 
 }
