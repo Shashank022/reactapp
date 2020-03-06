@@ -15,6 +15,20 @@ class App extends Component {
         showPersons:false
   }); 
 
+  static getDerivedStateFromProps(props, state){
+    console.log('[App.js] getDerivedStateFromProps', props)
+    return state;
+  }
+componentWillMount(){
+  console.log('[App.js] componentWillMount');
+}
+
+
+
+  componentDidMount(){
+    console.log('[App.js] componentDidMount');
+  }
+
 switchNameHandler = (newName) => {
   this.setState({
     persons:[
@@ -56,7 +70,7 @@ deletePersonHandler = (personIndex) => {
 }
 
 render(){
-
+  console.log('[App.js] rendering.......');
   const style = {
     backgroundColor:'green',
     font:'inherit',
@@ -76,15 +90,15 @@ render(){
       persons = (
         <div>
           <Persons 
-          persons = {this.state.persons} 
-          clicked = {this.deletePersonHandler}
-          chnaged = {this.nameChangeHandler}/>
+          persons={this.state.persons} 
+          clicked={this.deletePersonHandler}
+          chnaged={this.nameChangeHandler}/>
           </div> 
       )
       style.backgroundColor = 'red';
   }
 
-  let classes =[];
+  const classes =[];
 
   if(this.state.persons.length <= 2){
       classes.push('red');
