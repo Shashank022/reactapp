@@ -5,7 +5,12 @@ import Persons from '../components/Persons/Persons';
 
 
 class App extends Component {
- state = ({
+ 
+ constructor(props){
+    super(props);
+    console.log('[App.js] constructor');
+  } 
+  state = ({
     persons:[
           { id:'21',name:'Kumar', age:28 },
           { id:'22',name:'Kiran', age:29 },
