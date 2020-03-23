@@ -3,98 +3,85 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
- state = ({
-    persons:[
-          { name:'Kumar', age:28 },
-          { name:'Kiran', age:29 },
-          { name:'Lenin', age:22 }
-        ],
-        otherState:'some other value',
-        showPersons:false
-  }); 
 
+  state = {
+    persons : [
+      { id: 'dsa', name : 'Max' , age : 28 },
+      { id: 'dkjh', name : 'Manohar' , age : 32 },
+      { id: 'vxcd', name : 'Kumar' , age : 32 },
+    ],
+    othserState: 'other value',
+    showPersons : false
+  }
 
-switchNameHandler = (newName) => {
-  this.setState({
-    persons:[
-      { name:newName, age:89 },
-      { name:'Kiran Reddy', age:29 },
-      { name:'Lenin Smith', age:45 }
-    ]
-    
-  });
-}
+  togglePersonHandler = () => {
+      const doesShow = this.state.showPersons;
+      this.setState({showPersons: !doesShow});
 
-togglePersonsHandler = () => {
-  const doesShow = this.StaticRange.showPersons;
-  this.setState({showPersons: !doesShow})
+  }
 
-}
+  
+  nameChangeHandler= ( event, id )=>{
+    //console.log("Event is called....!!");
 
+    const person = this.state.persons.findIndex();
+    this.setState({
+      persons : [
+          { name : 'Maxmillian' , age : 28 },
+          { name : 'Kumanaran' , age : 32 },
+          { name : 'Sangakara' , age : 32 },
+      ],
+    })
+  }
 
+  deletePersonHandler(personIndex){
+    //const persons = this.state.persons.slice();
+    const persons  = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({persons : persons})
+  }
 
-nameChangeHandler = (event) => {
-  this.setState({
-        persons:[
-          { name:'Raja Kumar', age:89 },
-          { name: event.target.value, age:29 },
-          { name:'Lenin Smith', age:45 }
-        ]
-      });
-}
+  render() {
+      const style = {
+        background :'white',
+        font : 'inherit',
+        border: '1px solid blue',
+        padding: '8px',
+        cursor: 'pointer'
+      }
 
-render(){
+      let persons = null;
 
-  return (
-    <div className="App">
-        <h1>REACT</h1>
-        <p>This is working...!!!</p>
-        <button onClick={() => this.togglePersonsHandler}>Switch Prop</button>
-        {
-          this.showPersons === true ?
+      if(this.state.showPersons){
+         persons = (
           <div>
-            <Person 
-                name={this.state.persons[0].name} 
-                age={this.state.persons[0].age}
-                />
-            <Person 
-                name={this.state.persons[1].name} 
-                age={this.state.persons[1].age}
-                click={this.switchNameHandler.bind(this,'Kranthi Rajaram..!!')} 
-                changed={this.nameChangeHandler}
-                > My Hobbies are:</Person>
-            <Person 
-                name={this.state.persons[2].name} 
-                age={this.state.persons[2].age}/>
-          </div> : null
-          }
-    </div>
-  );
-}
-    //return React.createElement('div',null,React.createElement('h1',{className:'App'},'New React App...!!'));
+            {this.state.persons.map((person, index) => {
+              return <Person 
+              click={() => this.deletePersonHandler(index)}
+              name={person.name}
+              age= {person.age}
+              key={person.id}
+              changed= {() => this.nameChangeHandler()}
+              />
+            })}
+ 
+        </div>
+         );
+      }
+
+
+    return (
+      <div className="App">
+        <h1>Hi I am new React App </h1>
+        <p>This is really working</p>
+        <button 
+        style ={style}
+        onClick={this.togglePersonHandler}>Toggle Name</button>
+        {persons}
+        </div>
+      );
+   //  return React.createElement('div', null, React.createElement('h1', {className:'App' },' This is working now..!!'));
+  }
 }
 
 export default App;
-
-
-// state = {
-//   persons:[
-//     { name:'Kumar', age:28 },
-//     { name:'Kiran', age:29 },
-//     { name:'Lenin', age:22 }
-//   ],
-//   otherState:'some other value'
-  
-// }
-
-// switchNameHandler = () => {
-//   this.setState({
-//     persons:[
-//       { name:'Raja Kumar', age:89 },
-//       { name:'Kiran Reddy', age:29 },
-//       { name:'Lenin Smith', age:45 }
-//     ]
-    
-//   });
-//   console.log(this.state);
-// }
