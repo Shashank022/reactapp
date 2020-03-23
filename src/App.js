@@ -11,6 +11,7 @@ class App extends Component {
       { id: 'vxcd', name : 'Kumar' , age : 32 },
       { id: 'qx34',name : 'Rajashekhar' , age : 19 },
       { id: 'exdr',name : 'Ramkumaran' , age : 22 },
+      
     ],
     othserState: 'other value',
     showPersons : false
