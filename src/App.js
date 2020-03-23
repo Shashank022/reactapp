@@ -9,6 +9,8 @@ class App extends Component {
       { id: 'dsa', name : 'Max' , age : 28 },
       { id: 'dkjh', name : 'Manohar' , age : 32 },
       { id: 'vxcd', name : 'Kumar' , age : 32 },
+      { id: 'qx34',name : 'Rajashekhar' , age : 19 },
+      { id: 'exdr',name : 'Ramkumaran' , age : 22 },
     ],
     othserState: 'other value',
     showPersons : false
@@ -22,14 +24,14 @@ class App extends Component {
 
   
   nameChangeHandler= ( event, id )=>{
-    //console.log("Event is called....!!");
-
-    const person = this.state.persons.findIndex();
+      const person = this.state.persons.findIndex();
     this.setState({
       persons : [
           { name : 'Maxmillian' , age : 28 },
           { name : 'Kumanaran' , age : 32 },
-          { name : 'Sangakara' , age : 32 },
+          { name : 'Sangakara' , age : 12 },
+          { name : 'Rajashekhar' , age : 32 },
+          { name : 'Ramkumaran' , age : 22 },
       ],
     })
   }
