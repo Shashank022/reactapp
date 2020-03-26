@@ -46,7 +46,8 @@ class App extends Component {
 
   render() {
       const style = {
-        background :'white',
+        background :'green',
+        color:'white',
         font : 'inherit',
         border: '1px solid blue',
         padding: '8px',
@@ -70,18 +71,31 @@ class App extends Component {
  
         </div>
          );
+         style.background = 'red';
       }
 
+      let classes = [];
+
+      if(this.state.persons.length <= 3){
+        classes.push('red'); //classes = ['red']
+      }
+
+      if(this.state.persons.length <= 2){
+        classes.push('bold'); //classes = ['red']
+      }
 
     return (
       <div className="App">
         <h1>Hi I am new React App </h1>
-        <p>This is really working</p>
+        <p className={classes}>This is really working</p>
         <button 
         style ={style}
         onClick={this.togglePersonHandler}>Toggle Name</button>
         {persons}
+        
+        
         </div>
+
       );
    //  return React.createElement('div', null, React.createElement('h1', {className:'App' },' This is working now..!!'));
   }
