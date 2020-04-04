@@ -12,6 +12,7 @@ class App extends Component {
     ],
     othserState: 'other value',
     showPersons : false
+    
   }
 
   togglePersonHandler = () => {
